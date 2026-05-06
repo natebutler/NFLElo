@@ -25,8 +25,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Install packages
-        run: |
-          Rscript -e 'install.packages(c("nflfastR","dplyr","gt","nflreadr"))'
+        run: Rscript -e 'install.packages(c("nflfastR","dplyr","gt","nflreadr"))'
 
       - name: Run Elo script
         run: Rscript scripts/update_elo.R
