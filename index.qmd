@@ -34,24 +34,70 @@ elo_table <- elo %>%
   left_join(logos, by = c("team" = "team_abbr"))
 
 # Build table
+# elo_table %>%
+#   select(rank, team_logo_espn, team_name, rating) %>%
+#   gt() %>%
+#   tab_options(
+#     table.width = pct(80)
+#   ) %>%
+#   text_transform(
+#     locations = cells_body(columns = team_logo_espn),
+#     fn = function(x) web_image(x, height = 45)
+#   ) %>%
+#   cols_label(
+#     rank = "Rank",
+#     team_logo_espn = "",
+#     team_name = "Team",
+#     rating = "Elo Rating"
+#   ) %>%
+#   fmt_number(
+#     columns = rating,
+#     decimals = 2,
+#     use_seps = FALSE
+#   ) %>%
+#   tab_header(
+#     title = "NFL Elo Rankings",
+#     subtitle = paste("Updated:", Sys.Date())
+#   )
+
 elo_table %>%
   select(rank, team_logo_espn, team_name, rating) %>%
   gt() %>%
+  
+  tab_options(
+    table.width = pct(50)
+  ) %>%
+  
+  cols_width(
+    rank ~ px(60),
+    team_logo_espn ~ px(70),
+    team_name ~ px(30),
+    rating ~ px(120)
+  ) %>%
+  
   text_transform(
     locations = cells_body(columns = team_logo_espn),
-    fn = function(x) web_image(x, height = 30)
+    fn = function(x) web_image(x, height = 45)
   ) %>%
+  
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_body(columns = c(rank))
+  ) %>%
+  
   cols_label(
     rank = "Rank",
     team_logo_espn = "",
     team_name = "Team",
     rating = "Elo Rating"
   ) %>%
+  
   fmt_number(
     columns = rating,
     decimals = 2,
     use_seps = FALSE
   ) %>%
+  
   tab_header(
     title = "NFL Elo Rankings",
     subtitle = paste("Updated:", Sys.Date())
