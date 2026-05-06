@@ -1,6 +1,11 @@
 ---
 title: "🏈 NFL Elo Rankings"
-format: html
+format:
+  html:
+    embed-resources: true
+    fig-align: center
+    df-print: paged
+echo: false
 ---
 
 ```{r}
