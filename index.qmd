@@ -21,7 +21,7 @@ library(nflreadr)
 ```{r}
 #| echo: false
 # Load data
-elo <- readRDS("data/final_elo.rds")
+elo <- readRDS("final_elo.rds")
 
 # Add logos
 logos <- load_teams() %>%
