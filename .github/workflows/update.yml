@@ -35,9 +35,9 @@ jobs:
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
-          with:
-            render: false
-            target: gh-pages
+        with:
+          render: false
+          target: gh-pages
             
             
             
