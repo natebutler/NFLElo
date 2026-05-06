@@ -4,7 +4,9 @@ format:
   html:
     embed-resources: true
     fig-align: center
-    df-print: paged
+    page-layout: full
+    theme: cosmo
+    toc: false
 echo: false
 ---
 
@@ -25,7 +27,7 @@ elo <- readRDS("final_elo.rds")
 
 # Add logos
 logos <- load_teams() %>%
-  select(team_abbr, team_logo_espn)
+  select(team_abbr, team_name, team_logo_espn)
 
 elo_table <- elo %>%
   mutate(rank = row_number()) %>%
@@ -33,7 +35,7 @@ elo_table <- elo %>%
 
 # Build table
 elo_table %>%
-  select(rank, team_logo_espn, team, rating) %>%
+  select(rank, team_logo_espn, team_name, rating) %>%
   gt() %>%
   text_transform(
     locations = cells_body(columns = team_logo_espn),
@@ -42,7 +44,7 @@ elo_table %>%
   cols_label(
     rank = "Rank",
     team_logo_espn = "",
-    team = "Team",
+    team_name = "Team",
     rating = "Elo Rating"
   ) %>%
   fmt_number(
