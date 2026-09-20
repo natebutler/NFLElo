@@ -61,7 +61,7 @@ elo_table <- elo %>%
 #   )
 
 elo_table %>%
-  select(rank, team_logo_espn, team_name, rating) %>%
+  select(rank, team_logo_espn, team_name, record, rating) %>%
   gt() %>%
   
   tab_options(
@@ -89,6 +89,7 @@ elo_table %>%
     rank = "Rank",
     team_logo_espn = "",
     team_name = "Team",
+    record = "Record",
     rating = "Elo Rating"
   ) %>%
   
