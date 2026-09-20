@@ -2,7 +2,7 @@ name: Weekly Update NFL Elo Site
 
 on:
   schedule:
-    - cron: "0 10 1 9 *" 
+    - cron: "0 15 * * 2" 
   push:
     branches: [main, master]
   workflow_dispatch:
