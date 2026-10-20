@@ -2,9 +2,9 @@ library(nflfastR)
 library(dplyr)
 
 run_nfl_elo <- function(seasons = c(2025, 2026),
-                        k = 20,
-                        home_field = 65,
-                        regress = 1/3,
+                        k = 30,
+                        home_field = 40,
+                        regress = 0.45,
                         mean_elo = 1500) {
   
   games <- load_schedules(seasons) %>%
@@ -71,6 +71,6 @@ run_nfl_elo <- function(seasons = c(2025, 2026),
 }
 
 # --- Run and save ---
-final_elo <- run_nfl_elo(season = c(2025,2026), k = 25, home_field = 40)
+final_elo <- run_nfl_elo(season = c(2025,2026), k = 30, regress = 0.45, home_field = 40)
 
 saveRDS(final_elo, "final_elo.rds")
